@@ -9,18 +9,22 @@ import ReactDOM from "./react-dom";
 //     <span>哈哈</span>
 //   </div>
 // );
+function FunctionComponent(props) {
+  return React.createElement("div", {}, `hello ${props.name}`);
+}
 
+// const el2 = <FunctionComponent name="cjl" />;
 const el1 = React.createElement(
   "div",
   { className: "el" },
-  "你好啊",
   React.createElement("span", { style: { color: "red" } }, "哈哈", "哦哦"),
   React.createElement(
     "span",
     { style: { fontSize: "30px", color: "green" } },
     "哈哈"
-  )
+  ),
+  React.createElement(FunctionComponent, { name: "蔡杰鲁" })
 );
-// console.log(el);
 console.log(el1);
+// console.log(el2);
 ReactDOM.render(el1, document.getElementById("root"));

@@ -11,11 +11,13 @@ function mount(vdom, container) {
 }
 function createDom(vdom) {
   let { type, props } = vdom;
-  console.log(vdom);
+  // console.log(vdom);
   let dom;
   if (type === REACT_TEXT) {
     dom = document.createTextNode(vdom.content);
-    console.log(dom);
+    // console.log(dom);
+  } else if (typeof type === "function") {
+    return mountFunctionComponent(vdom);
   } else {
     dom = document.createElement(type);
   }
@@ -61,6 +63,13 @@ function changeChildren(children, container) {
     children.forEach((child) => render(child, container));
   }
 }
+function mountFunctionComponent(vdom) {
+  let { type, props } = vdom;
+  const functionVdom = type(props);
+
+  return createDom(functionVdom);
+}
+
 const ReactDOM = {
   render,
 };
