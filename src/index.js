@@ -2,18 +2,23 @@
 import React from "./react";
 // import ReactDOM from "react-dom";
 import ReactDOM from "./react-dom";
-// import App from "./App";
 
-// const el = (
-//   <div className="el">
-//     <span>哈哈</span>
-//   </div>
-// );
 function FunctionComponent(props) {
   return React.createElement("div", {}, `hello ${props.name}`);
 }
 
-// const el2 = <FunctionComponent name="cjl" />;
+class ClassComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gender: "male",
+    };
+  }
+  render() {
+    return React.createElement("div", {}, `class component,${this.props.age}`);
+  }
+}
+
 const el1 = React.createElement(
   "div",
   { className: "el" },
@@ -23,8 +28,8 @@ const el1 = React.createElement(
     { style: { fontSize: "30px", color: "green" } },
     "哈哈"
   ),
-  React.createElement(FunctionComponent, { name: "蔡杰鲁" })
+  React.createElement(FunctionComponent, { name: "蔡杰鲁" }),
+  React.createElement(ClassComponent, { age: 22 })
 );
 console.log(el1);
-// console.log(el2);
 ReactDOM.render(el1, document.getElementById("root"));

@@ -1,4 +1,5 @@
 import { REACT_ELEMENT } from "./constants";
+import { Component } from "./Component";
 import { toObject } from "./util";
 
 function createElement(type, config, children) {
@@ -31,5 +32,6 @@ function createElement(type, config, children) {
 }
 const React = {
   createElement,
+  Component,
 };
 export default React;
